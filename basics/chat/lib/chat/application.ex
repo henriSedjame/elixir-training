@@ -1,4 +1,4 @@
-defmodule Gencounter.Application do
+defmodule Chat.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -8,13 +8,12 @@ defmodule Gencounter.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: Gencounter.Worker.start_link(arg)
-      # {Gencounter.Worker, arg}
+      {Task.Supervisor, name: Chat.TaskSupervisor}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Gencounter.Supervisor]
+    opts = [strategy: :one_for_one, name: Chat.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

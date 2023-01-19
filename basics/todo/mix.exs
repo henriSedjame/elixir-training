@@ -1,9 +1,9 @@
-defmodule Calculator.MixProject do
+defmodule Todo.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :calculator,
+      app: :todo,
       version: "0.1.0",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
